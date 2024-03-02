@@ -15,6 +15,7 @@ use Illuminate\Http\RedirectResponse;
 
 
 
+
 class UserController extends Controller
 {
     public function index():Response
@@ -26,10 +27,13 @@ class UserController extends Controller
 
     public function store(UserRequest $request): RedirectResponse
     {
+
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+
         ]);
 
         return Redirect::route('users');

@@ -29,14 +29,13 @@ class ClientController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
+            'name' => 'required',
             'street' => 'required',
             'number' => 'required',
             'zip_code' => 'required',
             'city' => 'required',
             'state' => 'required',
             'country' => 'required',
-            'longitude' => 'required',
-            'latitude' => 'required',
         ]);
 
         $client = Client::create($request->all());
@@ -60,7 +59,8 @@ class ClientController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
-            'street' => 'required',
+            'name' => 'required',
+            'street_number' => 'required',
             'number' => 'required',
             'zip_code' => 'required',
             'city' => 'required',
