@@ -106,4 +106,30 @@ class UserController extends Controller
         }
 
     }
+
+/*
+*added by victor
+*/
+
+    function updateUserExpirationDate(int $id, Request $request) {
+        if(!$id){
+            return redirect()->back()->withErrors([
+                'message' => 'No se encontró el usuario'
+            ]);
+        }
+        $user = User::findOrFail($id);
+
+        $request->validate(['expires_at' => 'required|string|max:255',]);
+
+        if ($user) {
+            $user->expires_at = $request->expires_at;
+            $user->save();
+            return true;
+        }
+
+        return false;
+    }
+
+
+
 }
